@@ -1,0 +1,64 @@
+import java.util.Date;
+
+class Account{
+	private int id;
+	private double balance;
+	private double annualInterestRate;
+	private Date dateCreated;
+
+	Account(){
+		id = 0;
+		balance = 0;
+		annualInterestRate = 0;
+	}
+	Account(int id, int balance){
+		this.id = id;
+		this.balance = balance;
+	}
+
+	void setId(int ID){
+		id = ID;
+	}
+	int getId(){
+		return id;
+	}
+
+	
+	void setBalance(double Balance){
+		balance = Balance;
+	}
+	double getBalance(){
+		return balance;
+	}
+
+
+	void setAIR(double Air){
+		 annualInterestRate = Air;
+	}
+	double getAIR(){
+		return annualInterestRate;
+	}
+
+	Date dateCreated(){
+		return dateCreated;
+	}
+	
+	double getMonthlyInterestRate(){
+		return annualInterestRate/1200;
+	}
+	double getMonthlyInterest(){
+		return balance*monthkyInterestRate;
+	}
+	void withdraw(double money){
+		balance -= money;
+		if(balance < 0)
+			System.out.println("Not enough money!");
+		else
+			System.out.println("The rest money is:" + balance);
+	}
+
+	void deposit(double money){
+		balance += money;
+		System.out.println("The total money is :" + balance);
+	}
+}
