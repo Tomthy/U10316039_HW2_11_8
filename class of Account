@@ -56,9 +56,11 @@ class Account{
 		else
 			System.out.println("The rest money is:" + balance);
 	}
-
 	void deposit(double money){
 		balance += money;
 		System.out.println("The total money is :" + balance);
+	}
+	String toString(){
+		return "id" + id + "\nbalance" + balance + "\ngetMonthlyInterest" + getMonthlyInterest() + "\ndateCreated" + dateCreated();
 	}
 }
