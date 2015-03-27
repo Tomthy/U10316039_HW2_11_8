@@ -1,19 +1,25 @@
 import java.util.Date;
+import java.util.Arraylist;
 
 class Account{
 	private int id;
 	private double balance;
 	private double annualInterestRate;
 	private Date dateCreated;
+	private String name;
+
+	ArrayList<Transation> arraylist = new ArrayList<Transation>();
 
 	Account(){
 		id = 0;
 		balance = 0;
 		annualInterestRate = 0;
+		name = "W";
 	}
-	Account(int id, int balance){
+	Account(int id,double balance, String name){
 		this.id = id;
 		this.balance = balance;
+		this.name = name;
 	}
 
 	void setId(int ID){
@@ -24,14 +30,18 @@ class Account{
 	}
 
 	
-	void setBalance(double Balance){1q 
+	void setBalance(double Balance){ 
 		balance = Balance;
 	}
 	double getBalance(){
 		return balance;
 	}
-
-
+	void setName(String name){
+		this.name = name;
+	}
+	String getName(){
+		return name;
+	}
 	void setAIR(double Air){
 		 annualInterestRate = Air;
 	}
@@ -53,14 +63,17 @@ class Account{
 		balance -= money;
 		if(balance < 0)
 			System.out.println("Not enough money!");
-		else
+		else{
+			arraylist.add(new Transaction('W',money,balance,"Thanks for coming!"));
 			System.out.println("The rest money is:" + balance);
+		}
 	}
 	void deposit(double money){
 		balance += money;
 		System.out.println("The total money is :" + balance);
+		arraylist.add(new Transaction('D',money,balance,"Thanks for coming!"));
 	}
 	String toString(){
-		return "id" + id + "\nbalance" + balance + "\ngetMonthlyInterest" + getMonthlyInterest() + "\ndateCreated" + dateCreated();
+		return "id" + id + "\nbalance" + balance + "\nname" + name + "\ngetMonthlyInterest" + getMonthlyInterest() + "\ndateCreated" + dateCreated();
 	}
 }
