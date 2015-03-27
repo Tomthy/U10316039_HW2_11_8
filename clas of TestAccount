@@ -1,0 +1,19 @@
+public class TestAccount{
+	public static void main(String[] args){
+		Account Account1 = new Account(1122,1000,"JAVAprogramming");
+		Account1.setAIR(28);
+
+		Account1.withdraw(5);
+		Account1.deposit(30);
+
+		Account1.withdraw(4);
+		Account1.deposit(40);
+
+		Account1.withdraw(2);
+		Account1.deposit(50);
+		
+
+		System.out.println(Account1.toString());
+
+	}
+}
