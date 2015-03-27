@@ -1,0 +1,177 @@
+/**班級：資科一
+ *姓名：王懷謙
+ *學號：U10316039
+ * Ex: 11.8 </br>
+ *Subject: To write a program excute withdrawing and depositting .
+ */
+
+import java.util.Date;
+import java.util.ArrayList;
+
+public class TestAccount{
+	public static void main(String[] args){
+		Account Account1 = new Account(1122,1000,"JAVAprogramming");
+		
+		//default for annualInterestRate
+		Account1.setAIR(28);
+
+		//default for withdraw and deposit.
+		Account1.withdraw(5);
+		Account1.deposit(30);
+
+		//default for withdraw and deposit.
+		Account1.withdraw(4);
+		Account1.deposit(40);
+
+		//default for withdraw and deposit.
+		Account1.withdraw(2);
+		Account1.deposit(50);
+
+		//Call toString method.
+		System.out.println(Account1.toString());
+
+	}
+}
+
+class Account{
+	private int id;
+	private double balance;
+	private double annualInterestRate;
+	private Date dateCreated;
+	private String name;
+	int i = 0;
+
+	ArrayList<Transaction> arraylist = new ArrayList<Transaction>();
+
+	//no-arg Constructor of Account.
+	Account(){
+		id = 0;
+		balance = 0;
+		annualInterestRate = 0;
+		name = "W";
+	}
+	//Constructor of Account.
+	Account(int id,double balance, String name){
+		dateCreated = new Date();
+		this.id = id;
+		this.balance = balance;
+		this.name = name;
+	}
+
+	//set and get method for
+	void setId(int ID){
+		id = ID;
+	}
+	int getId(){
+		return id;
+	}
+
+	//set and get method for
+	void setBalance(double Balance){ 
+		balance = Balance;
+	}
+	double getBalance(){
+		return balance;
+	}
+
+	//set and get method for
+	void setName(String name){
+		this.name = name;
+	}
+	String getName(){
+		return name;
+	}
+
+	//set and get method for
+	void setAIR(double Air){
+		 annualInterestRate = Air;
+	}
+	double getAIR(){
+		return annualInterestRate;
+	}
+
+	//Get dateCreated.
+	Date dateCreated(){
+		return dateCreated;
+	}
+	
+	//Return MonthlyInterestRate and MonthlyInterest.
+	double getMonthlyInterestRate(){
+		return annualInterestRate/1200;
+	}
+	double getMonthlyInterest(){
+		return balance*getMonthlyInterestRate();
+	}
+
+	//Method for withdraw and deposit.
+	void withdraw(double money){
+		balance -= money;
+		if(balance < 0)
+			System.out.println("Not enough money!");
+		else{
+			arraylist.add(new Transaction('W',money,balance,"Thanks for coming!"));
+			System.out.println("The rest money is:" + balance);
+			System.out.println(((Transaction)arraylist.get(i)).getDescription());
+			i++;
+		}
+	}
+	void deposit(double money){
+		balance += money;
+		System.out.println("The total money is :" + balance);
+		arraylist.add(new Transaction('D',money,balance,"Thanks for coming!"));
+		System.out.println(((Transaction)arraylist.get(i)).getDescription());
+		i++;
+	}
+	
+	//Print out the id,balance,name, MonthlyInterest and dateCreatedMonthlyInterest.
+	public String toString(){
+		return "id :" + id + "\nbalance :" + balance + "\nname :" + name + "\ngetMonthlyInterest :" + getMonthlyInterest() + "\ndateCreated :" + dateCreated();
+	}
+}
+
+class Transaction{
+
+	private char type;
+	private double amount;
+	private double balance;
+	private String description;
+
+	//Constructor of Transaction.
+	Transaction(char type,double amount,double balance,String description){
+		this.type = type;
+		this.balance = balance;
+		this.description = description;
+	}
+	
+	//set and get method for type.
+	void setType(char type){
+		this.type = type;
+	}
+	char getType(){
+		return type;
+	}
+
+	//set and get method for amount.
+	void setAmount(double amount){
+		this.amount = amount;
+	}
+	double getAmount(){
+		return amount;
+	}
+
+	//set and get method for balance.
+	void setBalance(double balance){
+		this.balance = balance;
+	}
+	double getBalance(){
+		return balance;
+	}
+
+	//set and get method for description.
+	void setDescription(String description){
+		this.description = description;
+	}
+	String getDescription(){
+		return description;
+	}
+}
