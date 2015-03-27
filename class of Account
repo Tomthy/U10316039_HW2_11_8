@@ -7,8 +7,9 @@ class Account{
 	private double annualInterestRate;
 	private Date dateCreated;
 	private String name;
+	int i = 0;
 
-	ArrayList<Transation> arraylist = new ArrayList<Transation>();
+	ArrayList<Transaction> arraylist = new ArrayList<Transaction>();
 
 	Account(){
 		id = 0;
@@ -17,6 +18,7 @@ class Account{
 		name = "W";
 	}
 	Account(int id,double balance, String name){
+		dateCreated = new Date();
 		this.id = id;
 		this.balance = balance;
 		this.name = name;
@@ -57,7 +59,7 @@ class Account{
 		return annualInterestRate/1200;
 	}
 	double getMonthlyInterest(){
-		return balance*monthkyInterestRate;
+		return balance*getMonthlyInterestRate();
 	}
 	void withdraw(double money){
 		balance -= money;
@@ -66,14 +68,18 @@ class Account{
 		else{
 			arraylist.add(new Transaction('W',money,balance,"Thanks for coming!"));
 			System.out.println("The rest money is:" + balance);
+			System.out.println(((Transaction)arraylist.get(i)).getDescription());
+			i++;
 		}
 	}
 	void deposit(double money){
 		balance += money;
 		System.out.println("The total money is :" + balance);
 		arraylist.add(new Transaction('D',money,balance,"Thanks for coming!"));
+		System.out.println(((Transaction)arraylist.get(i)).getDescription());
+		i++;
 	}
-	String toString(){
-		return "id" + id + "\nbalance" + balance + "\nname" + name + "\ngetMonthlyInterest" + getMonthlyInterest() + "\ndateCreated" + dateCreated();
+	public String toString(){
+		return "id :" + id + "\nbalance :" + balance + "\nname :" + name + "\ngetMonthlyInterest :" + getMonthlyInterest() + "\ndateCreated :" + dateCreated();
 	}
 }
