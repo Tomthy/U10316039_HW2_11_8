@@ -1,6 +1,7 @@
 import java.util.Date;
 
-class Transation{
+
+class Transaction{
 	private char type;
 	private double amount;
 	private double balance;
@@ -35,6 +36,4 @@ class Transation{
 	String getDescription(){
 		return description;
 	}
-	
-	
 }
